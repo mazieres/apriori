@@ -1,5 +1,18 @@
 import re
+import unittest
 from collections import defaultdict
+
+
+class TestApriori(unittest.TestCase):
+	"""Tests for Apriori()"""
+
+	def test_apriori(self):
+		data = [ 'ABC', 'ABAB', 'BCAA' ]
+		expectedResult = { "AB": 2, "BC": 2 } # if 33 < support < 66
+		expectedPrimitives = set(['A', 'B', 'C'])
+		testedResult = Apriori(data, 34)
+		self.assertEqual(expectedResult, testedResult)
+		self.assertEqual(expectedPrimitives, testedResult.primitives)
 
 
 class Apriori(dict):
